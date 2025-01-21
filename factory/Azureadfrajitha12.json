@@ -1,0 +1,9 @@
+{
+	"name": "Azureadfrajitha12",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3b960a80-d7ac-489a-8dca-de63a638e856",
+		"tenantId": "a33e5c91-0842-4514-a9dd-0f57b1b9a633"
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"name": "TBLF",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSSQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CUSTID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CUSTName",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TBLF"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

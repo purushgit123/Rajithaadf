@@ -1,0 +1,38 @@
+{
+	"name": "dynamic_folder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADBS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"dynamic_content": {
+				"type": "String"
+			},
+			"input_folder": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@dataset().input_folder",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().dynamic_content",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

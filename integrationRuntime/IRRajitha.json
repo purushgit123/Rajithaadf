@@ -1,0 +1,19 @@
+{
+	"name": "IRRajitha",
+	"properties": {
+		"type": "Managed",
+		"description": "IR-Rajitha",
+		"typeProperties": {
+			"computeProperties": {
+				"location": "Central India",
+				"dataFlowProperties": {
+					"computeType": "General",
+					"coreCount": 8,
+					"timeToLive": 10,
+					"cleanup": false,
+					"customProperties": []
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"name": "Azurekeyvault12",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://KVRajitha.vault.azure.net/"
+		}
+	}
+}

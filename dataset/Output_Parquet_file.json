@@ -1,0 +1,22 @@
+{
+	"name": "Output_Parquet_file",
+	"properties": {
+		"description": "Output_Parquet_file",
+		"linkedServiceName": {
+			"referenceName": "LS_ADBS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "output",
+				"container": "dataset"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
