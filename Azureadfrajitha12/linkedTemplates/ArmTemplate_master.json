@@ -23,6 +23,11 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_Database_Parameter'"
 		},
+		"New_LSADBS_KEY_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'New_LSADBS_KEY'",
+			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=azurerajitha;"
+		},
 		"Azurekeyvault12_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://KVRajitha.vault.azure.net/"
@@ -93,6 +98,9 @@
 					},
 					"LS_Database_Parameter_password": {
 						"value": "[parameters('LS_Database_Parameter_password')]"
+					},
+					"New_LSADBS_KEY_connectionString": {
+						"value": "[parameters('New_LSADBS_KEY_connectionString')]"
 					},
 					"Azurekeyvault12_properties_typeProperties_baseUrl": {
 						"value": "[parameters('Azurekeyvault12_properties_typeProperties_baseUrl')]"

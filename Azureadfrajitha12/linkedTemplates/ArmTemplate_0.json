@@ -23,6 +23,11 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_Database_Parameter'"
 		},
+		"New_LSADBS_KEY_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'New_LSADBS_KEY'",
+			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=azurerajitha;"
+		},
 		"Azurekeyvault12_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://KVRajitha.vault.azure.net/"
@@ -343,6 +348,29 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/integrationRuntimes/IRRajitha')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/New_LSADBS_KEY')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('New_LSADBS_KEY_connectionString')]",
+					"accountKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "Azurekeyvault12",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "ADLSKEY12"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Azurekeyvault12')]"
 			]
 		},
 		{
@@ -731,43 +759,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_ADBS')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Purush')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "Customer data of purush",
-				"linkedServiceName": {
-					"referenceName": "LSSQL",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "id",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "name",
-						"type": "varchar"
-					},
-					{
-						"name": "salary",
-						"type": "int",
-						"precision": 10
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "purush"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LSSQL')]"
 			]
 		}
 	]

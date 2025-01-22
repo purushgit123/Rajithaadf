@@ -17,6 +17,9 @@
 		"LS_Database_Parameter_password": {
 			"value": ""
 		},
+		"New_LSADBS_KEY_connectionString": {
+			"value": "DefaultEndpointsProtocol=https;AccountName=azurerajitha;"
+		},
 		"Azurekeyvault12_properties_typeProperties_baseUrl": {
 			"value": "https://KVRajitha.vault.azure.net/"
 		},
