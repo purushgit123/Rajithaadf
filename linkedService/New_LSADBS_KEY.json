@@ -1,0 +1,18 @@
+{
+	"name": "New_LSADBS_KEY",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=azurerajitha;",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "Azurekeyvault12",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "ADLSKEY12"
+			}
+		}
+	}
+}
