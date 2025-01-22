@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "Azureadfrajitha12"
+		},
+		"LSSQL_password": {
+			"value": ""
+		},
+		"LS_ADBS_connectionString": {
+			"value": ""
+		},
+		"LS_ADBS1_connectionString": {
+			"value": ""
+		},
+		"LS_Database_Parameter_password": {
+			"value": ""
+		},
+		"Azurekeyvault12_properties_typeProperties_baseUrl": {
+			"value": "https://KVRajitha.vault.azure.net/"
+		},
+		"LSSQL_properties_typeProperties_server": {
+			"value": "azurerajitha12.database.windows.net"
+		},
+		"LSSQL_properties_typeProperties_database": {
+			"value": "Azure_Rajithaa"
+		},
+		"LSSQL_properties_typeProperties_userName": {
+			"value": "Rajitha"
+		},
+		"LS_Database_Parameter_properties_typeProperties_server": {
+			"value": "azurerajitha12.database.windows.net"
+		},
+		"LS_Database_Parameter_properties_typeProperties_database": {
+			"value": "@{linkedService().Dbname}"
+		},
+		"LS_Database_Parameter_properties_typeProperties_userName": {
+			"value": "Rajitha"
+		},
+		"EVENT-TRIGGER_CSV_properties_typeProperties_scope": {
+			"value": "/subscriptions/d9fd4fe4-6e7b-4e13-bc1d-55c99be9c315/resourceGroups/Azureadf/providers/Microsoft.Storage/storageAccounts/azurerajitha"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

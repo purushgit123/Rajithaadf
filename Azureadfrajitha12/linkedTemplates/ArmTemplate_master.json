@@ -1,0 +1,166 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "Azureadfrajitha12"
+		},
+		"LSSQL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LSSQL'"
+		},
+		"LS_ADBS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_ADBS'"
+		},
+		"LS_ADBS1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_ADBS1'"
+		},
+		"LS_Database_Parameter_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_Database_Parameter'"
+		},
+		"Azurekeyvault12_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://KVRajitha.vault.azure.net/"
+		},
+		"LSSQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "azurerajitha12.database.windows.net"
+		},
+		"LSSQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Azure_Rajithaa"
+		},
+		"LSSQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Rajitha"
+		},
+		"LS_Database_Parameter_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "azurerajitha12.database.windows.net"
+		},
+		"LS_Database_Parameter_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "@{linkedService().Dbname}"
+		},
+		"LS_Database_Parameter_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Rajitha"
+		},
+		"EVENT-TRIGGER_CSV_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/d9fd4fe4-6e7b-4e13-bc1d-55c99be9c315/resourceGroups/Azureadf/providers/Microsoft.Storage/storageAccounts/azurerajitha"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "Azureadfrajitha12_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_ADBS1_connectionString": {
+						"value": "[parameters('LS_ADBS1_connectionString')]"
+					},
+					"LSSQL_password": {
+						"value": "[parameters('LSSQL_password')]"
+					},
+					"LS_ADBS_connectionString": {
+						"value": "[parameters('LS_ADBS_connectionString')]"
+					},
+					"LS_Database_Parameter_password": {
+						"value": "[parameters('LS_Database_Parameter_password')]"
+					},
+					"Azurekeyvault12_properties_typeProperties_baseUrl": {
+						"value": "[parameters('Azurekeyvault12_properties_typeProperties_baseUrl')]"
+					},
+					"EVENT-TRIGGER_CSV_properties_typeProperties_scope": {
+						"value": "[parameters('EVENT-TRIGGER_CSV_properties_typeProperties_scope')]"
+					},
+					"LSSQL_properties_typeProperties_server": {
+						"value": "[parameters('LSSQL_properties_typeProperties_server')]"
+					},
+					"LSSQL_properties_typeProperties_database": {
+						"value": "[parameters('LSSQL_properties_typeProperties_database')]"
+					},
+					"LSSQL_properties_typeProperties_userName": {
+						"value": "[parameters('LSSQL_properties_typeProperties_userName')]"
+					},
+					"LS_Database_Parameter_properties_typeProperties_server": {
+						"value": "[parameters('LS_Database_Parameter_properties_typeProperties_server')]"
+					},
+					"LS_Database_Parameter_properties_typeProperties_database": {
+						"value": "[parameters('LS_Database_Parameter_properties_typeProperties_database')]"
+					},
+					"LS_Database_Parameter_properties_typeProperties_userName": {
+						"value": "[parameters('LS_Database_Parameter_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "Azureadfrajitha12_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'Azureadfrajitha12_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "Azureadfrajitha12_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'Azureadfrajitha12_ArmTemplate_1')]"
+			]
+		}
+	]
+}
