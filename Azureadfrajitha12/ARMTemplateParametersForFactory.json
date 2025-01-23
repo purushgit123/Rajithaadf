@@ -14,6 +14,9 @@
 		"LS_ADBS1_connectionString": {
 			"value": ""
 		},
+		"LS_ADBS2_connectionString": {
+			"value": ""
+		},
 		"LS_Database_Parameter_password": {
 			"value": ""
 		},

@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_ADBS1'"
 		},
+		"LS_ADBS2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_ADBS2'"
+		},
 		"LS_Database_Parameter_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_Database_Parameter'"
@@ -89,6 +93,9 @@
 					},
 					"LS_ADBS1_connectionString": {
 						"value": "[parameters('LS_ADBS1_connectionString')]"
+					},
+					"LS_ADBS2_connectionString": {
+						"value": "[parameters('LS_ADBS2_connectionString')]"
 					},
 					"LSSQL_password": {
 						"value": "[parameters('LSSQL_password')]"
@@ -168,6 +175,26 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'Azureadfrajitha12_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "Azureadfrajitha12_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'Azureadfrajitha12_ArmTemplate_2')]"
 			]
 		}
 	]
