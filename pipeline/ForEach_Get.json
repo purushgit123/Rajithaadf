@@ -84,14 +84,22 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "Customer",
-									"type": "DatasetReference"
+									"referenceName": "dynamic_folder",
+									"type": "DatasetReference",
+									"parameters": {
+										"dynamic_content": "glod",
+										"input_folder": "INPUT/Subfolder"
+									}
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "emp_out",
-									"type": "DatasetReference"
+									"referenceName": "dynamic_output_folder",
+									"type": "DatasetReference",
+									"parameters": {
+										"output_container": "silver",
+										"output_folder": "New_Out"
+									}
 								}
 							]
 						}
