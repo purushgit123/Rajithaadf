@@ -2,7 +2,7 @@
 	"name": "dynamic_output_folder",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADBS",
+			"referenceName": "LS_ADBS2",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
