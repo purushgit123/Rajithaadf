@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"on": {
-						"value": "Output",
+						"value": "Output1",
 						"type": "Expression"
 					},
 					"cases": [
