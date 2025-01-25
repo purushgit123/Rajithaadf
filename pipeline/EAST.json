@@ -180,7 +180,7 @@
 								],
 								"defaultActivities": [
 									{
-										"name": "other_regions",
+										"name": "other",
 										"type": "Copy",
 										"dependsOn": [],
 										"policy": {
