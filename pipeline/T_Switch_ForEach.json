@@ -123,7 +123,7 @@
 										"value": "INDIA",
 										"activities": [
 											{
-												"name": "Copy data2_copy1",
+												"name": "INDIA",
 												"type": "Copy",
 												"dependsOn": [],
 												"policy": {
