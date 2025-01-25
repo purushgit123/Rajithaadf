@@ -96,7 +96,7 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"dynamic_content": "gold",
-													"input_folder": "INPUT/Subfolder"
+													"input_folder": "INPUT"
 												}
 											}
 										],
