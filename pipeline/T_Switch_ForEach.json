@@ -62,7 +62,7 @@
 								},
 								"cases": [
 									{
-										"value": "ADDRESS_USA",
+										"value": "USA",
 										"activities": [
 											{
 												"name": "Copy data1_USA",
@@ -120,7 +120,7 @@
 										]
 									},
 									{
-										"value": "ADDRESS_INDIA",
+										"value": "INDIA",
 										"activities": [
 											{
 												"name": "Copy data2_copy1",
