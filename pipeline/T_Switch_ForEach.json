@@ -65,7 +65,7 @@
 										"value": "USA",
 										"activities": [
 											{
-												"name": "Copy data1_USA",
+												"name": "USA",
 												"type": "Copy",
 												"dependsOn": [],
 												"policy": {
