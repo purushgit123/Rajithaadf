@@ -64,7 +64,7 @@
 						"referenceName": "dynamic_output_folder",
 						"type": "DatasetReference",
 						"parameters": {
-							"output_container": "silver",
+							"output_container": "brown",
 							"output_folder": "New _Rajitha25"
 						}
 					}
