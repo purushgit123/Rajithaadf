@@ -118,6 +118,64 @@
 												]
 											}
 										]
+									},
+									{
+										"value": "South",
+										"activities": [
+											{
+												"name": "South",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "0.12:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "AzureSqlSource",
+														"sqlReaderQuery": "select * from dbo.order_common\nwhere Region = 'South'",
+														"queryTimeout": "02:00:00",
+														"partitionOption": "None"
+													},
+													"sink": {
+														"type": "AzureSqlSink",
+														"writeBehavior": "insert",
+														"sqlWriterUseTableLock": false
+													},
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"typeConversion": true,
+														"typeConversionSettings": {
+															"allowDataTruncation": true,
+															"treatBooleanAsNumber": false
+														}
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "dynamic_table",
+														"type": "DatasetReference",
+														"parameters": {
+															"tbtable": "order_common"
+														}
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "dynamic_table",
+														"type": "DatasetReference",
+														"parameters": {
+															"tbtable": "order_south"
+														}
+													}
+												]
+											}
+										]
 									}
 								]
 							}
