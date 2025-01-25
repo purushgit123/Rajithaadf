@@ -21,7 +21,7 @@
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
 							"wildcardFolderPath": "input",
-							"wildcardFileName": "*csv",
+							"wildcardFileName": "emp2.csv",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
