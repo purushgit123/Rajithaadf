@@ -20,7 +20,7 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": "input",
+							"wildcardFolderPath": "INPUT/Subfolder",
 							"wildcardFileName": "*csv",
 							"enablePartitionDiscovery": false
 						},
@@ -54,8 +54,8 @@
 						"referenceName": "dynamic_folder",
 						"type": "DatasetReference",
 						"parameters": {
-							"dynamic_content": "dataset",
-							"input_folder": "input"
+							"dynamic_content": "gold",
+							"input_folder": "INPUT/Subfolder"
 						}
 					}
 				],
@@ -73,6 +73,8 @@
 			{
 				"name": "Web1",
 				"type": "WebActivity",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy data1",
