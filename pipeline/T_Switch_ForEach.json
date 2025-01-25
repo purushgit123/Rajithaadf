@@ -1,5 +1,5 @@
 {
-	"name": "T_Switch_copy1",
+	"name": "T_Switch_ForEach",
 	"properties": {
 		"activities": [
 			{
@@ -32,8 +32,8 @@
 				}
 			},
 			{
-				"name": "Switch1",
-				"type": "Switch",
+				"name": "ForEach1",
+				"type": "ForEach",
 				"dependsOn": [
 					{
 						"activity": "Lookup1",
@@ -44,181 +44,196 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"on": {
+					"items": {
 						"value": "@activity('Lookup1').output.value",
 						"type": "Expression"
 					},
-					"cases": [
+					"isSequential": true,
+					"activities": [
 						{
-							"value": "ADDRESS_USA",
-							"activities": [
-								{
-									"name": "Copy data1",
-									"type": "Copy",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "AzureSqlSource",
-											"sqlReaderQuery": "SELECT * FROM DBO.ADDRESS_COMMON\nWHERE COUNTRY = 'USA'",
-											"queryTimeout": "02:00:00",
-											"partitionOption": "None"
-										},
-										"sink": {
-											"type": "AzureSqlSink",
-											"writeBehavior": "insert",
-											"sqlWriterUseTableLock": false
-										},
-										"enableStaging": false,
-										"translator": {
-											"type": "TabularTranslator",
-											"typeConversion": true,
-											"typeConversionSettings": {
-												"allowDataTruncation": true,
-												"treatBooleanAsNumber": false
-											}
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "dynamic_table",
-											"type": "DatasetReference",
-											"parameters": {
-												"tbtable": "ADDRESS_COMMON"
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "dynamic_table",
-											"type": "DatasetReference",
-											"parameters": {
-												"tbtable": "ADDRESS_USA"
-											}
-										}
-									]
-								}
-							]
-						},
-						{
-							"value": "ADDRESS_INDIA",
-							"activities": [
-								{
-									"name": "Copy data2",
-									"type": "Copy",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "AzureSqlSource",
-											"sqlReaderQuery": "SELECT NAME,\nADDRESS,\nCITY,\nCOUNTRY\nFROM DBO.ADDRESS_COMMON\nWHERE COUNTRY = 'INDIA'",
-											"queryTimeout": "02:00:00",
-											"partitionOption": "None"
-										},
-										"sink": {
-											"type": "AzureSqlSink",
-											"writeBehavior": "insert",
-											"sqlWriterUseTableLock": false
-										},
-										"enableStaging": false,
-										"translator": {
-											"type": "TabularTranslator",
-											"typeConversion": true,
-											"typeConversionSettings": {
-												"allowDataTruncation": true,
-												"treatBooleanAsNumber": false
-											}
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "dynamic_table",
-											"type": "DatasetReference",
-											"parameters": {
-												"tbtable": "ADDRESS_COMMON"
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "dynamic_table",
-											"type": "DatasetReference",
-											"parameters": {
-												"tbtable": "ADDRESS_INDIA"
-											}
-										}
-									]
-								}
-							]
-						}
-					],
-					"defaultActivities": [
-						{
-							"name": "Copy data3",
-							"type": "Copy",
+							"name": "Switch1_copy1",
+							"type": "Switch",
 							"dependsOn": [],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
 							"userProperties": [],
 							"typeProperties": {
-								"source": {
-									"type": "AzureSqlSource",
-									"sqlReaderQuery": "SELECT * FROM DBO.ADDRESS_COMMON\nWHERE COUNTRY NOT IN ('USA', 'INDIA')",
-									"queryTimeout": "02:00:00",
-									"partitionOption": "None"
+								"on": {
+									"value": "@item().COUNTRY",
+									"type": "Expression"
 								},
-								"sink": {
-									"type": "AzureSqlSink",
-									"writeBehavior": "insert",
-									"sqlWriterUseTableLock": false
-								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
+								"cases": [
+									{
+										"value": "ADDRESS_USA",
+										"activities": [
+											{
+												"name": "Copy data1_copy1",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "0.12:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "AzureSqlSource",
+														"sqlReaderQuery": "SELECT * FROM DBO.ADDRESS_COMMON\nWHERE COUNTRY = 'USA'",
+														"queryTimeout": "02:00:00",
+														"partitionOption": "None"
+													},
+													"sink": {
+														"type": "AzureSqlSink",
+														"writeBehavior": "insert",
+														"sqlWriterUseTableLock": false
+													},
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"typeConversion": true,
+														"typeConversionSettings": {
+															"allowDataTruncation": true,
+															"treatBooleanAsNumber": false
+														}
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "dynamic_table",
+														"type": "DatasetReference",
+														"parameters": {
+															"tbtable": "ADDRESS_COMMON"
+														}
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "dynamic_table",
+														"type": "DatasetReference",
+														"parameters": {
+															"tbtable": "ADDRESS_USA"
+														}
+													}
+												]
+											}
+										]
+									},
+									{
+										"value": "ADDRESS_INDIA",
+										"activities": [
+											{
+												"name": "Copy data2_copy1",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "0.12:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "AzureSqlSource",
+														"sqlReaderQuery": "SELECT NAME,\nADDRESS,\nCITY,\nCOUNTRY\nFROM DBO.ADDRESS_COMMON\nWHERE COUNTRY = 'INDIA'",
+														"queryTimeout": "02:00:00",
+														"partitionOption": "None"
+													},
+													"sink": {
+														"type": "AzureSqlSink",
+														"writeBehavior": "insert",
+														"sqlWriterUseTableLock": false
+													},
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"typeConversion": true,
+														"typeConversionSettings": {
+															"allowDataTruncation": true,
+															"treatBooleanAsNumber": false
+														}
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "dynamic_table",
+														"type": "DatasetReference",
+														"parameters": {
+															"tbtable": "ADDRESS_COMMON"
+														}
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "dynamic_table",
+														"type": "DatasetReference",
+														"parameters": {
+															"tbtable": "ADDRESS_INDIA"
+														}
+													}
+												]
+											}
+										]
 									}
-								}
-							},
-							"inputs": [
-								{
-									"referenceName": "dynamic_table",
-									"type": "DatasetReference",
-									"parameters": {
-										"tbtable": "ADDRESS_COMMON"
+								],
+								"defaultActivities": [
+									{
+										"name": "Copy data3_copy1",
+										"type": "Copy",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"source": {
+												"type": "AzureSqlSource",
+												"sqlReaderQuery": "SELECT * FROM DBO.ADDRESS_COMMON\nWHERE COUNTRY NOT IN ('USA', 'INDIA')",
+												"queryTimeout": "02:00:00",
+												"partitionOption": "None"
+											},
+											"sink": {
+												"type": "AzureSqlSink",
+												"writeBehavior": "insert",
+												"sqlWriterUseTableLock": false
+											},
+											"enableStaging": false,
+											"translator": {
+												"type": "TabularTranslator",
+												"typeConversion": true,
+												"typeConversionSettings": {
+													"allowDataTruncation": true,
+													"treatBooleanAsNumber": false
+												}
+											}
+										},
+										"inputs": [
+											{
+												"referenceName": "dynamic_table",
+												"type": "DatasetReference",
+												"parameters": {
+													"tbtable": "ADDRESS_COMMON"
+												}
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "dynamic_table",
+												"type": "DatasetReference",
+												"parameters": {
+													"tbtable": "ADDRESS_OTHERS"
+												}
+											}
+										]
 									}
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "dynamic_table",
-									"type": "DatasetReference",
-									"parameters": {
-										"tbtable": "ADDRESS_OTHERS"
-									}
-								}
-							]
+								]
+							}
 						}
 					]
 				}
