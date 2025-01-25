@@ -21,7 +21,7 @@
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
 							"wildcardFolderPath": "input",
-							"wildcardFileName": "*emp",
+							"wildcardFileName": "*csv",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -61,11 +61,11 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "dynamic_output_folder",
+						"referenceName": "dynamic_folder",
 						"type": "DatasetReference",
 						"parameters": {
-							"output_container": "brown",
-							"output_folder": "New _Rajitha25"
+							"dynamic_content": "silver",
+							"input_folder": "TPR"
 						}
 					}
 				]
