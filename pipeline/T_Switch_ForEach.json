@@ -51,7 +51,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Switch1_copy1",
+							"name": "Switch1_INDIA",
 							"type": "Switch",
 							"dependsOn": [],
 							"userProperties": [],
@@ -65,7 +65,7 @@
 										"value": "ADDRESS_USA",
 										"activities": [
 											{
-												"name": "Copy data1_copy1",
+												"name": "Copy data1_USA",
 												"type": "Copy",
 												"dependsOn": [],
 												"policy": {
@@ -180,7 +180,7 @@
 								],
 								"defaultActivities": [
 									{
-										"name": "Copy data3_copy1",
+										"name": "Copy data3_Others",
 										"type": "Copy",
 										"dependsOn": [],
 										"policy": {
