@@ -180,7 +180,7 @@
 								],
 								"defaultActivities": [
 									{
-										"name": "Copy data3_Others",
+										"name": "Others",
 										"type": "Copy",
 										"dependsOn": [],
 										"policy": {
