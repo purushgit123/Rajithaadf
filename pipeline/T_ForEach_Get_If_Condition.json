@@ -44,7 +44,38 @@
 								],
 								"ifTrueActivities": [
 									{
-										"name": "Copy data1",
+										"name": "Web1",
+										"type": "WebActivity",
+										"dependsOn": [
+											{
+												"activity": "Copy data1_copy1",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"method": "POST",
+											"headers": {
+												"Content-Type": "application/json"
+											},
+											"url": "https://prod-21.centralindia.logic.azure.com:443/workflows/58ada5b078b44a729c5c3f46ce35028a/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=xFv_tt_c1DtX5MnhssBZ7a28iR2XCodaKI2e1bLe_Ms",
+											"body": {
+												"value": "{\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"DataFactoryName\": \"@{pipeline().DataFactory}\",\n    \"ErrorMessage\": \"File is Missing\"\n}\n",
+												"type": "Expression"
+											}
+										}
+									},
+									{
+										"name": "Copy data1_copy1",
 										"type": "Copy",
 										"dependsOn": [],
 										"policy": {
@@ -61,7 +92,7 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFolderPath": "input",
+													"wildcardFolderPath": "INPUT",
 													"wildcardFileName": "*csv",
 													"enablePartitionDiscovery": false
 												},
@@ -95,8 +126,8 @@
 												"referenceName": "dynamic_folder",
 												"type": "DatasetReference",
 												"parameters": {
-													"dynamic_content": "dataset",
-													"input_folder": "input"
+													"dynamic_content": "glod",
+													"input_folder": "INPUT/Subfolder"
 												}
 											}
 										],
@@ -106,41 +137,10 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"output_container": "silver",
-													"output_folder": "New _Rajitha25"
+													"output_folder": "New_Out25"
 												}
 											}
 										]
-									},
-									{
-										"name": "Web1",
-										"type": "WebActivity",
-										"dependsOn": [
-											{
-												"activity": "Copy data1",
-												"dependencyConditions": [
-													"Succeeded"
-												]
-											}
-										],
-										"policy": {
-											"timeout": "0.12:00:00",
-											"retry": 0,
-											"retryIntervalInSeconds": 30,
-											"secureOutput": false,
-											"secureInput": false
-										},
-										"userProperties": [],
-										"typeProperties": {
-											"method": "POST",
-											"headers": {
-												"Content-Type": "application/json"
-											},
-											"url": "https://prod-21.centralindia.logic.azure.com:443/workflows/58ada5b078b44a729c5c3f46ce35028a/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=xFv_tt_c1DtX5MnhssBZ7a28iR2XCodaKI2e1bLe_Ms",
-											"body": {
-												"value": "{\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"DataFactoryName\": \"@{pipeline().DataFactory}\",\n    \"ErrorMessage\": \"File is Missing\"\n}\n",
-												"type": "Expression"
-											}
-										}
 									}
 								]
 							}
