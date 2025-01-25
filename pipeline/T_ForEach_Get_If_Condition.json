@@ -61,7 +61,7 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFolderPath": "INPUT",
+													"wildcardFolderPath": "input",
 													"wildcardFileName": "*csv",
 													"enablePartitionDiscovery": false
 												},
@@ -95,8 +95,8 @@
 												"referenceName": "dynamic_folder",
 												"type": "DatasetReference",
 												"parameters": {
-													"dynamic_content": "gold",
-													"input_folder": "INPUT"
+													"dynamic_content": "dataset",
+													"input_folder": "input"
 												}
 											}
 										],
