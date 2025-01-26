@@ -135,6 +135,26 @@
 												}
 											}
 										]
+									},
+									{
+										"name": "Append variable1",
+										"type": "AppendVariable",
+										"dependsOn": [
+											{
+												"activity": "Copy data1",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "Copid_list",
+											"value": {
+												"value": "@item().name",
+												"type": "Expression"
+											}
+										}
 									}
 								]
 							}
@@ -143,6 +163,11 @@
 				}
 			}
 		],
+		"variables": {
+			"Copid_list": {
+				"type": "Array"
+			}
+		},
 		"annotations": []
 	}
 }
