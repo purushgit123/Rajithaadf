@@ -1,0 +1,194 @@
+{
+	"name": "pipeline_rt",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT DISTINCT Region from order_common",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "dynamic_table",
+						"type": "DatasetReference",
+						"parameters": {
+							"tbtable": "order_common"
+						}
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1').output",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Switch1",
+							"type": "Switch",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"cases": [
+									{
+										"value": "East",
+										"activities": [
+											{
+												"name": "East",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "0.12:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "AzureSqlSource",
+														"sqlReaderQuery": "select * from dbo.order_common\nwhere Region = 'East'",
+														"queryTimeout": "02:00:00",
+														"partitionOption": "None"
+													},
+													"sink": {
+														"type": "AzureSqlSink",
+														"writeBehavior": "insert",
+														"sqlWriterUseTableLock": false
+													},
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"typeConversion": true,
+														"typeConversionSettings": {
+															"allowDataTruncation": true,
+															"treatBooleanAsNumber": false
+														}
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "dynamic_table",
+														"type": "DatasetReference",
+														"parameters": {
+															"tbtable": "order_common"
+														}
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "dynamic_table",
+														"type": "DatasetReference",
+														"parameters": {
+															"tbtable": "order_EAST"
+														}
+													}
+												]
+											}
+										]
+									},
+									{
+										"value": "south",
+										"activities": [
+											{
+												"name": "South",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "0.12:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "AzureSqlSource",
+														"sqlReaderQuery": "select * from dbo.order_common\nwhere Region = 'South'",
+														"queryTimeout": "02:00:00",
+														"partitionOption": "None"
+													},
+													"enableStaging": false
+												},
+												"inputs": [
+													{
+														"referenceName": "dynamic_table",
+														"type": "DatasetReference",
+														"parameters": {
+															"tbtable": "order_common"
+														}
+													}
+												]
+											}
+										]
+									}
+								],
+								"defaultActivities": [
+									{
+										"name": "other",
+										"type": "Copy",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"source": {
+												"type": "AzureSqlSource",
+												"sqlReaderQuery": "select * from dbo.order_common\nwhere Region  NOT IN ('East','South')",
+												"queryTimeout": "02:00:00",
+												"partitionOption": "None"
+											},
+											"enableStaging": false
+										},
+										"inputs": [
+											{
+												"referenceName": "dynamic_table",
+												"type": "DatasetReference",
+												"parameters": {
+													"tbtable": "order_common"
+												}
+											}
+										]
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		],
+		"annotations": []
+	}
+}
