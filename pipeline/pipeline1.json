@@ -18,7 +18,19 @@
 					"items": {
 						"value": "@activity('Get Metadata1').output.columnCount",
 						"type": "Expression"
-					}
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "Wait1",
+							"type": "Wait",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"waitTimeInSeconds": 1
+							}
+						}
+					]
 				}
 			},
 			{
@@ -38,7 +50,7 @@
 						"referenceName": "dynamic_table",
 						"type": "DatasetReference",
 						"parameters": {
-							"tbtable": "emp2.csv"
+							"tbtable": "lucky"
 						}
 					},
 					"fieldList": [
