@@ -52,7 +52,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@item().Customer_name",
+									"value": "@item().structure",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
