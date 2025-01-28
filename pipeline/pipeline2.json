@@ -111,7 +111,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "TBLA",
+												"referenceName": "Purush",
 												"type": "DatasetReference"
 											}
 										]
@@ -127,7 +127,14 @@
 												]
 											}
 										],
-										"userProperties": []
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "tem_count",
+											"value": {
+												"value": "@variables('itr_var_cout')",
+												"type": "Expression"
+											}
+										}
 									}
 								]
 							}
