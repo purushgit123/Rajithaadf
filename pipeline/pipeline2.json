@@ -52,7 +52,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@variables('itr_var_cout')",
+									"value": "@item().Customer_name",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
